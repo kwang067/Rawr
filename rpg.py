@@ -17,7 +17,7 @@ class MonsterFight():
             x = random.randint(1,10)
             if x > 2:
                 if self.monster_health <=0:
-                    print ("The Monster is DEAD")
+                    print ("You have hit the monster for -20 health. The Monster is DEAD")
                     self.fight = False
                 else:
                     self.monster_health-=20
@@ -27,7 +27,7 @@ class MonsterFight():
             elif x <= 2:
                 self.player_critical()
                 if self.monster_health <=0:
-                    print ("The Monster is DEAD")
+                    print ("You have dealt a CRITICAL for -40 health. The Monster is DEAD!")
                     self.fight = False
                 else:    
                     print ('You have dealt a CRITICAL for -40 health') #\nMonster health:',  self.monster_health)
@@ -71,14 +71,18 @@ class MonsterFight():
             self.player_health-=10
             if self.player_health <=0:
                 print("The MONSTER has hit you for 10 damage and killed you! \nGAME OVER!")
+                print("\n")
             else:
                 print("The MONSTER has hit you for 10 damage.")
+                print("\n")
         elif x ==1 and self.player_health >0:
             self.monster_critical()
             if self.player_health <=0:
                 print("The MONSTER has hit you for 10 damage and killed you! \nGAME OVER!")
+                print("\n")
             else:
                 print("The MONSTER has hit you with a critical! Dealing 20 damage.")
+                print("\n")
 
             
     
@@ -110,23 +114,26 @@ class MonsterFight():
         from IPython.display import clear_output
         while self.fight == True:
             print("Your health:", self.player_health, "\tMonster health:", self.monster_health, "\nYour mana:", self.player_mana)
-            time.sleep(1)
+#            time.sleep(1)
+            print("\n")
             x = int(input("What would you like to do? \n1.Attack \t2.Heal \n3.Use item \t4.Escape \n"))
             if x == 1:
                 self.attack()
                 if self.monster_health > 0:
                     self.monster_attack()
                 else:
+                    print("\n")
                     print("The MONSTER is DEAD!")
+                    self.fight = False
                     break
-                time.sleep(3)
+                time.sleep(1)
                 clear_output()
 #                print("Your health:", self.player_health, "\tMonster health:", self.monster_health, "\nYour mana:", self.player_mana)
             elif x == 2:
                 self.heal()
                 print("\n")
                 self.monster_attack()
-                time.sleep(4)
+                time.sleep(1)
                 clear_output()
 #                print("Your health:", self.player_health, "\tMonster health:", self.monster_health, "\nYour mana:", self.player_mana)
             elif x == 3:
@@ -194,7 +201,7 @@ class MonsterFight():
         self.fighting = False
     #######################################################
     
-    class Route():
+class Route():
     
     
     def __init__(self):
@@ -210,6 +217,8 @@ class MonsterFight():
         print("            /                \               ")
         print("           /                  \              ")
         print("-----------                    --------------")
+        
+
         
     def dead_end(self):
         print("_____________________________________________")
@@ -234,15 +243,43 @@ class MonsterFight():
         print("===============               ===============")
 ##################################################
 real_fight = MonsterFight()
+real_route = Route()
 
 import time
 from IPython.display import clear_output
 import random
 
-real_fight.fight_or_run()
-time.sleep(2)
-clear_output()
-while real_fight.fight == True:
-    real_fight.selection()
+
+count = 0
+while count < 3:
+    real_route.left_or_right()
+    x = int(input("Will you go Left or Right? \n \n1.Left \t2.Right \n"))
+    y = random.randint(1,2)
+    if x == y:
+        real_route.dead_end()
+        print("You  have hit a dead end")
+        print("\n")
+        z = int(input("What will you do now? \n \n1.Turn around \t2.Do nothing \n"))
+#        if z == 1:
+#            real_route.go_straight()
+    elif x != y:
+        real_fight.fight_or_run()
+        time.sleep(2)
+        clear_output()
+        while real_fight.fight == True:
+            real_fight.selection()
+            count+=1
+            real_fight.monster_health+=100
+    else:
+        print("Your entry is invalid")
+print("YOU ARE VICTORIOUS!")
+
+
+
+#real_fight.fight_or_run()
+#time.sleep(2)
+#clear_output()
+#while real_fight.fight == True:
+#    real_fight.selection()
 
     
