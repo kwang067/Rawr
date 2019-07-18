@@ -1,0 +1,100 @@
+def answer1():
+    answer1attempts = 1
+    while clist[0] != 3:
+        x = random.choice(pos[0])
+        if x == 3:
+            clist.append(x)
+            break
+#        print("this is from answer1")
+#        print(answer1attempts)
+#        print(x)
+        pos[0].remove(x)
+        answer1attempts+=1
+    print(f"It took {answer1attempts}  attempts for number 1")
+    
+    ========================
+    def answer2():
+    answer2attempts = 1
+    while clist[1] != 5:
+        x = random.choice(pos[1])
+        if x == 5:
+            clist.append(x)
+            break
+#        print("this is from answer2")   
+#        print(x)
+        pos[1].remove(x)
+        answer2attempts+=1
+    print(f"It took {answer2attempts}  attempts for number 2")
+    
+    =============================
+    def answer3():
+    answer3attempts = 1
+    while clist[2] != 54:
+        x = random.choice(pos[2])
+        if x == 54:
+            clist.append(x)
+            break
+#        print("this is from answer3")
+#        print(answer1attempts)
+#        print(x)
+        pos[2].remove(x)
+        answer3attempts+=1
+    print(f"It took {answer3attempts}  attempts for number 3")
+    ==========================================
+    def answer4():
+    answer4attempts = 1
+    while clist[3] != 76:
+        x = random.choice(pos[3])
+        if x == 76:
+            clist.append(x)
+            break
+#        print("this is from answer4")
+#        print(answer1attempts)
+#        print(x)
+        pos[3].remove(x)
+        answer4attempts+=1
+    print(f"It took {answer4attempts}  attempts for number 4")
+    =========================================
+    def answer5():
+    answer5attempts = 1
+    while clist[4] != 26:
+        x = random.choice(pos[4])
+        if x == 26:
+            clist.append(x)
+            break
+#        print("this is from answer5")
+#        print(answer1attempts)
+#        print(x)
+        pos[4].remove(x)
+        answer5attempts+=1
+    print(f"It took {answer5attempts}  attempts for number 5")
+    ===================================
+    def answer6():
+    answer6attempts = 1
+    while clist[5] != 81:
+        x = random.choice(pos[5])
+        if x == 81:
+            clist.append(x)
+            break
+#        print("this is from answer6")
+#        print(answer1attempts)
+#        print(x)
+        pos[5].remove(x)
+        answer6attempts+=1
+    print(f"It took {answer6attempts}  attempts for number 6")
+    ======================
+    import random
+pos = [list(range(1,100000)),list(range(1,100000)),list(range(1,100000)),list(range(1,100000)),list(range(1,100000)),list(range(1,100000))]
+clist = [0]
+
+
+answer1()
+answer2()
+answer3()
+answer4()
+answer5()
+answer6()
+clist.pop(0)
+print(clist)
+#print(answer1attempts)
+#print(answer2attempts)
